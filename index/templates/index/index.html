@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<!--
+	Lens by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{% load staticfiles %}
+{% load static %}
+<html>
+	<head>
+		<title>Chasin Views</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="{% static 'index/js/ie/html5shiv.js'%}"></script><![endif]-->
+		<link rel="stylesheet" href="{% static 'index/css/main.css'%}" />
+		<!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
+		<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">-->
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<!--<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>-->
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<!--[if lte IE 8]><link rel="stylesheet" href="{% static 'index/css/ie8.css' %}" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="{% static 'index/css/ie9.css' %}" /><![endif]-->
+		<noscript><link rel="stylesheet" href="{% static 'index/css/noscript.css'%}" /></noscript>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<style>.ui-dialog { z-index: 1000 !important;}</style>
+	</head>
+	<body class="is-loading-0 is-loading-1 is-loading-2">
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Chasin Views</h1>
+						<p onclick=showModal()>Can't Stop, Won't Stop</p>
+						<ul class="icons">
+							<!--
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							-->
+							<li><a href="#popupLogin" data-rel="popup" data-position-to="window" class="icon fa-upload" id="uploadBtn"><span class="label">Upload</span></a></li>
+							<li><a href="http://www.instagram.com/chasinviews" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="mailto:chasinviews@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+						</ul>
+					</header>
+
+				<!-- Thumbnail -->
+					<section id="thumbnails">
+						{% if posts %}
+							{% for post in posts%}
+								<article>
+									<a class="thumbnail" href="{% get_media_prefix %}{{ post.fullPhoto|urlencode }}"><img src="{% get_media_prefix %}{{ post.thumbnailPhoto|urlencode }}" alt="" /></a>
+									<h2>{{ post.title }}</h2>
+									<p>By: {{ post.photographer }}</p>
+								</article>
+							{% endfor %}
+						{% endif %}
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="copyright">
+							<li>Mutiny</li><br><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</footer>
+					
+			<!-- Modal content -->
+			<!--<div data-role="popup" data-theme="a" data-overlay-theme="b" data-dismissible="false" class="ui-corner-all" id="photoUploadDialog">
+				<div data-role="header" data-theme="a">
+					<h1>Upload a Photo</h1>
+				</div>
+				<div role="main" class="ui-content">
+					{{ form.as_p }}
+				</div>
+				<div data-role="footer" data-theme="a">
+					<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a>
+					<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Delete</a>
+				</div>
+			</div>
+			-->
+<!--			<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
+    <form>
+        <div style="padding:10px;">
+		<div data-role="header" data-theme="a">
+			<h1>Upload a Photo</h1>
+		</div>
+		<div role="main" class="ui-content">
+			{{ form.as_p }}
+		</div>
+		<button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Upload</button>
+        </div>
+    </form>
+</div>-->
+			
+
+
+		<!-- Scripts -->
+			<!--<script src="{% static 'index/js/jquery.min.js' %}"></script>-->
+			<script src="{% static 'index/js/skel.min.js' %}"></script>
+			<!--[if lte IE 8]><script src="{% static 'index/js/ie/respond.min.js' %}"></script><![endif]-->
+			<script src="{% static 'index/js/main.js' %}"></script>
+			<!--<script>
+				$('#uploadBtn').click(function(){
+					$( "#dialog" ).dialog({
+            modal:true,
+	    height: 400,
+	    width: 325,
+            autoopen: true,
+            buttons: {
+		Cancel: function() {
+                    $( this ).dialog( "close" );
+                },
+                Upload: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+				});
+			</script>-->
+		</body>
+</html>
